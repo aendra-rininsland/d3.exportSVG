@@ -14,11 +14,7 @@
     "noarg": true,
     "undef": true,
     "strict": true,
-    "sub": true,
     "trailing": true,
     "smarttabs": true,
-    "white": true,
-    "globals": {
-      "define": true
-    }
+    "white": true
 }

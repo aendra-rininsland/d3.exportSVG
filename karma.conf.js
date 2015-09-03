@@ -11,20 +11,37 @@ module.exports = function (config) {
     basePath: '',
 
     frameworks: [
-      'mocha'
+      'mocha',
+      'fixture'
     ],
+    
+    client: {
+      captureConsole: true,
+      mocha: {
+        bail: true
+      }
+    },
+    
+    preprocessors: {
+      '**/*.html'   : ['html2js'],
+      '**/*.json'   : ['json_fixtures']
+    },
 
     // list of files / patterns to load in the browser
     files: [
-      'components/chai/chai.js',
-      'd3.svgExport.js',
+      'node_modules/js-fixtures/fixtures.js',
+      'node_modules/chai/chai.js',
+      'node_modules/d3/d3.js',
+      'node_modules/jquery/dist/jquery.js',
+      'd3.exportSVG.js',
+      {pattern: 'test/fixtures/**/*'},
       'test/**/*.js'
     ],
 
     // use dots reporter, as travis terminal does not support escaping sequences
     // possible values: 'dots', 'progress', 'junit', 'teamcity'
     // CLI --reporters progress
-    reporters: ['dots'],
+    reporters: ['dots', 'spec'],
 
     // enable / disable watching file and executing tests whenever any file changes
     // CLI --auto-watch --no-auto-watch
@@ -33,8 +50,9 @@ module.exports = function (config) {
     // start these browsers
     // CLI --browsers Chrome,Firefox,Safari
     browsers: [
-      'Chrome',
-      'Firefox'
+      // 'Chrome',
+      // 'Firefox',
+      'Safari'
     ],
 
     // if browser does not capture in given timeout [ms], kill it
@@ -47,11 +65,15 @@ module.exports = function (config) {
 
     plugins: [
       'karma-mocha',
+      'karma-spec-reporter',
       'karma-requirejs',
       'karma-chrome-launcher',
       'karma-firefox-launcher',
       'karma-ie-launcher',
-      'karma-safari-launcher'
+      'karma-safari-launcher',
+      'karma-html2js-preprocessor',
+      'karma-json-fixtures-preprocessor',
+      'karma-fixture'
     ]
   });
 };

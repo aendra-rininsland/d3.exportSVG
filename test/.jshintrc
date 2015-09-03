@@ -1,0 +1,26 @@
+{
+  "browser": true,
+  "node": true,
+  "es5": true,
+  "esnext": true,
+  "bitwise": false,
+  "curly": false,
+  "eqeqeq": true,
+  "eqnull": true,
+  "immed": true,
+  "latedef": false,
+  "laxcomma": true,
+  "newcap": true,
+  "noarg": true,
+  "undef": true,
+  "strict": true,
+  "sub": true,
+  "trailing": true,
+  "smarttabs": true,
+  "white": true,
+  "globals": {
+    "define": true
+  }
+  "chai": true,
+  "mocha": true
+}
